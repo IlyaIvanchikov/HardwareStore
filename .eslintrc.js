@@ -8,5 +8,11 @@ module.exports = {
     "rules": {
         "max-len": [1, 120, 2, {ignoreComments: true}],
         "linebreak-style": 0
-    }
+    },
+    "env": {
+        "browser": true,
+        "commonjs": true,
+        "es6": true,
+        "jquery": true
+      },
 };
