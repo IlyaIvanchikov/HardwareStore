@@ -37,22 +37,36 @@ module.exports = {
         'css-loader'],
       },
       {
-        test: /\.(gif|png|jpeg|svg)$/i,
-        use: [
-          'file-loader',
-          {
-            loader: 'image-webpack-loader',
-            options: {
-              mozjpeg: {
-                progressive: true,
-                quality: 65,
-              },
-              optipng: {
-                enabled: false,
-              },
-            },
+        test: /\.(gif|png|jpe?g|svg)$/i,
+        use: [{
+          loader: 'file-loader',
+          options: {
+            outputPath: 'images/',
           },
+        },
+        {
+          loader: 'image-webpack-loader',
+          options: {
+            bypassOnDebug: true, // webpack@1.x
+            disable: true, // webpack@2.x and newer
+          },
+        },
         ],
+      },
+      {
+        test: /\.(html)$/,
+        use: {
+          loader: 'html-loader',
+          options: {
+            attrs: ['img:src', 'link:href'],
+          },
+        },
+      },
+      {
+        test: /\.(jpg|png)$/,
+        use: {
+          loader: 'url-loader',
+        },
       },
     ],
   },
