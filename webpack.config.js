@@ -3,14 +3,21 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const OptimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const webpack = require('webpack');
 const cssnano = require('cssnano');
 
 const entry = path.join(__dirname, './app/src/index.js');
 const outputPath = path.join(__dirname, '/dist/');
-
+const PATHS = {
+  // Path to main app dir
+  src: path.join(__dirname, './app/src'),
+  // Path to Output dir
+  dist: path.join(__dirname, './dist'),
+  // Path to Second Output dir (js/css/fonts etc folder)
+  assets: 'assets/',
+};
 module.exports = {
-  mode: 'production',
   entry,
   output: {
     path: outputPath,
@@ -36,37 +43,21 @@ module.exports = {
         },
         'css-loader'],
       },
+      // {
+      //   test: /\.(html)$/,
+      //   use: ['html-loader'],
+      // },
       {
-        test: /\.(gif|png|jpe?g|svg)$/i,
+        test: /\.(gif|png|jpg|svg)$/,
         use: [{
           loader: 'file-loader',
           options: {
-            outputPath: 'images/',
-          },
-        },
-        {
-          loader: 'image-webpack-loader',
-          options: {
-            bypassOnDebug: true, // webpack@1.x
-            disable: true, // webpack@2.x and newer
+            name: '[name].[ext]',
+            outputPath: 'public/',
+            // publicPath: 'public/',
           },
         },
         ],
-      },
-      {
-        test: /\.(html)$/,
-        use: {
-          loader: 'html-loader',
-          options: {
-            attrs: ['img:src', 'link:href'],
-          },
-        },
-      },
-      {
-        test: /\.(jpg|png)$/,
-        use: {
-          loader: 'url-loader',
-        },
       },
     ],
   },
@@ -91,5 +82,9 @@ module.exports = {
       },
       canPrint: true,
     }),
+    new CopyWebpackPlugin([
+      { from: `${PATHS.src}/public`, to: 'public' },
+      { from: `${PATHS.src}/static` },
+    ]),
   ],
 };
