@@ -43,18 +43,13 @@ module.exports = {
         },
         'css-loader'],
       },
-      // {
-      //   test: /\.(html)$/,
-      //   use: ['html-loader'],
-      // },
       {
         test: /\.(gif|png|jpg|svg)$/,
         use: [{
           loader: 'file-loader',
           options: {
             name: '[name].[ext]',
-            outputPath: 'public/',
-            // publicPath: 'public/',
+            outputPath: 'assets/img',
           },
         },
         ],
@@ -83,8 +78,7 @@ module.exports = {
       canPrint: true,
     }),
     new CopyWebpackPlugin([
-      { from: `${PATHS.src}/public`, to: 'public' },
-      { from: `${PATHS.src}/static` },
+      { from: `${PATHS.src}/img`, to: `${PATHS.assets}/img` },
     ]),
   ],
 };
