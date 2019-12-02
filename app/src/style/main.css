@@ -1,3 +1,151 @@
-body {
-background: url("../img/les.jpg") no-repeat;
+.navbar{ background:#F97300;}
+.nav-link , .navbar-brand{ color: #f4f4f4; cursor: pointer;}
+.nav-link{ margin-right: 1em !important;}
+.nav-link:hover{ background: #f4f4f4; color: #f97300; }
+.navbar-collapse{ justify-content: flex-end;}
+.navbar-toggler{  background:#fff !important;}
+
+.header{
+    background-image: url('../img/lampa.jpg');
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    border-bottom: black 1rem solid;
+}
+
+.overlay{
+    position: absolute;
+    min-height: 100%;
+    min-width: 100%;
+    left: 0;
+    background: rgba(244, 244, 244, 0.10);
+}
+
+.description{
+    position: absolute;
+    top: 30%;
+    margin: auto;
+    padding: 2em;
+}
+
+.description h1{
+    color:#F97300 ;
+}
+
+.description p{
+    color:rgb(3, 3, 3);
+    font-size: 24px;
+    width: 50%;
+    line-height: 1.5;
+}
+
+.slider-tec{
+    position: relative; 
+    background-color: #444442;
+    z-index: 0;
+}
+
+.slider-tec h1{
+    color:#F97300;
+    margin-bottom: 2rem; 
+    padding-top: 1rem;
+}
+
+.slider-tec .card{
+    box-shadow: 0 0 20px #ccc;
+}
+
+.card-img{
+    display: flex;
+    justify-content: center;
+}
+
+.card img{
+    height: auto;
+    max-height: 35rem;   
+}
+
+.slider-tec .card-title{
+    color:#F97300;
+     
+}
+
+.slider-tec .card-body{
+    padding: 1em;
+}
+
+@keyframes move {
+    from {
+        top: 2em;
+      }
+      25% {
+        top: 20em;
+      }
+      50% {
+        top: 30em;
+      }
+      75% {
+        top: 20em;
+      }
+      to {
+        top: 2em;
+      }
+}
+
+.icon1 {
+    position: absolute;
+    height: 10em;
+    top: 2em;
+    left: 5em;
+    z-index: 1;
+    animation: move;
+    animation-iteration-count: infinite;
+    animation-play-state: running;
+    animation-direction: normal;
+    animation-duration: 10s;
+}
+
+.icon2 {
+    position: absolute;
+    height: 10em;
+    top: 2em;
+    right: 5em;
+    z-index: 1;
+    animation: move;
+    animation-iteration-count: infinite;
+    animation-play-state: running;
+    animation-direction: normal;
+    animation-duration: 10s;
+}
+
+.team{
+    margin: 4em 0;
+    position: relative;  
+}
+
+.team h1{
+    color:#F97300;
+    margin: 2em; 
+}
+
+.team .item{
+    position: relative;
+}
+
+.team .des{
+    background: #F97300;
+    color: #fff;
+    text-align: center;
+    border-bottom-left-radius: 93%;
+    transition:.3s ease-in-out;
+}
+
+.team .item:hover .des{
+    height: 100%;
+    background:#f973007d;
+    position: absolute;
+    width: 89%;
+    padding: 5em;
+    top: 0;
+    border-bottom-left-radius: 0;
 }
