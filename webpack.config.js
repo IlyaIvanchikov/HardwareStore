@@ -58,7 +58,14 @@ module.exports = {
   },
   plugins: [
     new CleanWebpackPlugin(),
-    new HtmlWebpackPlugin({ template: './index.html' }),
+    new HtmlWebpackPlugin({
+      template: './index.html',
+      filename: './index.html',
+    }),
+    new HtmlWebpackPlugin({
+      template: './app/src/page/delivery.html',
+      filename: './page/delivery.html',
+    }),
     new MiniCssExtractPlugin({ filename: '[name].css' }),
     new webpack.ProvidePlugin({
       $: 'jquery',

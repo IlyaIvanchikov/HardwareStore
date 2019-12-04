@@ -1,4 +1,5 @@
 import './style/main.css';
+import './style/delivery.css';
 import 'bootstrap';
 import './components/header';
 import 'bootstrap/dist/css/bootstrap.min.css';
