@@ -126,6 +126,7 @@
     background-attachment: fixed;
     background-size: cover;
     background-position: center; 
+    padding-bottom: 1em;
 }
 
 .team h1 {
@@ -138,6 +139,11 @@
     position: relative;
 }
 
+.item span {
+    text-align: center;
+    position: relative;
+    display: block;
+}
 .team .des {
     background: #F97300;
     color: #fff;
@@ -156,9 +162,15 @@
     background-attachment: fixed;
     background-size: cover;
     background-position: center;  
+    border-top: 4px solid black;
 }
 
 .address {
+    color: whitesmoke;
+    padding: 2em;
+}
+
+.footer p {
     color: whitesmoke;
     padding: 2em;
 }

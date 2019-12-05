@@ -1,0 +1,66 @@
+.header-dl {
+    background-color:rgb(224, 224, 181);
+    color:#F97300 ;
+    padding-bottom: 1em;
+}
+
+.ul-dl {
+    color:black;
+}
+
+.colortext {
+    color: red;
+}
+
+.col-dl img{
+    height: 55px;
+    margin-bottom: 1em;
+    padding-top: 1em;
+}
+
+.col-dl {
+    text-align: center;
+}
+
+.main-dl {
+    background-color: rgb(245, 243, 153);
+    border-bottom: 3px solid black;
+}
+
+.ft {
+    position: relative;
+    height: 100px;
+    padding-top: 1em;
+    display: flex;
+    justify-content: center;
+}
+
+.footer-dl {
+    background-color: rgb(110, 110, 110);
+}
+
+.ft p {
+    position: relative;
+    top: 1.5em;
+    margin-left: 1em;
+}
+
+.body-dl {
+    background-color: rgb(110, 110, 110);
+}
+
+.footer-color {
+    color: rgb(3, 50, 94);
+}
+
+.footer-color2 {
+    color:rgb(155, 42, 42);
+}
+
+.footer-color3 {
+    color:purple;
+}
+
+.footer-color4 {
+    color: yellow;
+}
