@@ -1,4 +1,5 @@
 const path = require('path');
+const fs = require('fs');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
@@ -10,13 +11,13 @@ const cssnano = require('cssnano');
 const entry = path.join(__dirname, './app/src/index.js');
 const outputPath = path.join(__dirname, '/dist/');
 const PATHS = {
-  // Path to main app dir
   src: path.join(__dirname, './app/src'),
-  // Path to Output dir
   dist: path.join(__dirname, './dist'),
-  // Path to Second Output dir (js/css/fonts etc folder)
   assets: 'assets/',
+  page: path.join(__dirname, './app/src/page'),
 };
+const PAGES = fs.readdirSync(PATHS.page).filter(fileName => fileName.endsWith('.html'));
+
 module.exports = {
   entry,
   output: {
@@ -54,18 +55,25 @@ module.exports = {
         },
         ],
       },
+      {
+        test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+        use: [{
+          loader: 'file-loader',
+          options: {
+            name: '[name].[ext]',
+            outputPath: 'assets/img',
+          },
+        },
+        ],
+      },
     ],
   },
   plugins: [
     new CleanWebpackPlugin(),
-    new HtmlWebpackPlugin({
-      template: './index.html',
-      filename: './index.html',
-    }),
-    new HtmlWebpackPlugin({
-      template: './app/src/page/delivery.html',
-      filename: './page/delivery.html',
-    }),
+    ...PAGES.map(page => new HtmlWebpackPlugin({
+      template: `${PATHS.page}/${page}`,
+      filename: `./page/${page}`
+    })),
     new MiniCssExtractPlugin({ filename: '[name].css' }),
     new webpack.ProvidePlugin({
       $: 'jquery',
@@ -86,6 +94,7 @@ module.exports = {
     }),
     new CopyWebpackPlugin([
       { from: `${PATHS.src}/img`, to: `${PATHS.assets}/img` },
+      { from: `${PATHS.src}/fonts`, to: `${PATHS.assets}/fonts` },
     ]),
   ],
 };

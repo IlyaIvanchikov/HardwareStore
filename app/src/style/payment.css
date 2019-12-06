@@ -1,0 +1,21 @@
+#pay {
+    background-color:rgb(224, 224, 181);
+    color:#F97300;
+    margin-bottom: 0;
+}
+
+#pay p {
+    color: black;
+}
+
+.accordion {
+    font-size: 1.5em;
+}
+
+.accordion button{
+    font-size: 1.5em;
+}
+
+.body-pt {
+    background-color:rgb(224, 224, 181);
+}
