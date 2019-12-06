@@ -1,18 +1,23 @@
-.img-pbi {
-    margin-left: 7em;
-}
-
-.header-pbi h1 {
+.header-cmp h1 {
     color:#F97300;
     background-color:rgb(224, 224, 181);
 }
 
-.pbi-row {
+.cmp-row {
     border-bottom: 1px solid black;
     padding-bottom: 1em;
     padding-top: 1em;
 }
 
-.main-pbi {
+.main-cmp {
+    background-color:rgb(224, 224, 181);
+}
+
+.cmp {
+    background-color:rgb(224, 224, 181);
+    border-bottom: 2px solid black;
+}
+
+.body-cmp {
     background-color:rgb(224, 224, 181);
 }

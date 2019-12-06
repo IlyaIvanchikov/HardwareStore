@@ -2,6 +2,7 @@ import './style/main.css';
 import './style/fonts.css';
 import './style/payment.css';
 import './style/delivery.css';
+import './style/company.css';
 import './style/pbi.css';
 import 'bootstrap';
 import './components/header';
