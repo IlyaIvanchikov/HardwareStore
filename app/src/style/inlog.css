@@ -1,0 +1,13 @@
+.inLog {
+    background-color:rgb(224, 224, 181);
+}
+
+.log {
+    min-height: 100%;
+    min-width: 100%;
+    position: absolute;
+}
+
+label {
+    font-size: 36px;
+}

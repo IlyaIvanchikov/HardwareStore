@@ -16,7 +16,7 @@ const PATHS = {
   assets: 'assets/',
   page: path.join(__dirname, './app/src/page'),
 };
-const PAGES = fs.readdirSync(PATHS.page).filter(fileName => fileName.endsWith('.html'));
+const PAGES = fs.readdirSync(PATHS.page).filter((fileName) => fileName.endsWith('.html'));
 
 module.exports = {
   entry,
@@ -70,9 +70,9 @@ module.exports = {
   },
   plugins: [
     new CleanWebpackPlugin(),
-    ...PAGES.map(page => new HtmlWebpackPlugin({
+    ...PAGES.map((page) => new HtmlWebpackPlugin({
       template: `${PATHS.page}/${page}`,
-      filename: `./page/${page}`
+      filename: `./page/${page}`,
     })),
     new MiniCssExtractPlugin({ filename: '[name].css' }),
     new webpack.ProvidePlugin({
