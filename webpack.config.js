@@ -23,6 +23,9 @@ module.exports = {
   output: {
     path: outputPath,
   },
+  node: {
+    fs: 'empty',
+  },
   module: {
     rules: [
       {
@@ -95,6 +98,7 @@ module.exports = {
     new CopyWebpackPlugin([
       { from: `${PATHS.src}/img`, to: `${PATHS.assets}/img` },
       { from: `${PATHS.src}/fonts`, to: `${PATHS.assets}/fonts` },
+      { from: `${PATHS.src}/data`, to: `${PATHS.assets}/data` },
     ]),
   ],
 };

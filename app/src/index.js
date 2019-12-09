@@ -9,11 +9,3 @@ import './components/log';
 import 'bootstrap';
 import './components/header';
 import 'bootstrap/dist/css/bootstrap.min.css';
-// import myImage from './public/les.jpg';
-// $('body').css('background-color', 'red');
-
-// let inlog = document.querySelector('.inLog');
-
-// inlog.addEventListener("click", () => {
-
-// })
