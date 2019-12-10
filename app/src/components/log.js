@@ -1,48 +1,19 @@
-const fs = require('fs');
-const path = require('path');
+// import Router from 'express';
+// import express from 'express';
+ import fs from 'fs';
+// // import path from 'path';
 
+
+// const router = Router();
 const logButton = document.querySelector('.log-button');
-const arr = ['hello'];
-// const getAll = () => new Promise((resolve, reject) => {
-//   fs.readFile(
-//     path('../users.json'),
-//     'utf-8',
-//     (err, content) => {
-//       if (err) {
-//         reject(err);
-//       } else {
-//         resolve(alert(JSON.parse(content)));
-//       }
-//     },
-//   );
-// });
-
-// const getAll = (event) => new Promise((resolve, reject) => {
-//   fs.writeFile('message.txt', 'hello', (err) => {
-//     if (err) reject(err);
-//     resolve(alert('alert'));
-//   });
-//   event.preventDefault();
-// });
+const login = document.getElementById('Login');
+// const arr = ['hello'];
+// const app = express();
+// const jsonParser = express.json();
 
 
-function getAll() {
-  return new Promise((resolve, reject) => {
-    fs.readFile
-    (path.join(__dirname, 'assets', 'data', 'users.json'),
-    'utf-8',
-    (err, content) => {
-    if (err) {
-        reject(err);
-    } else {
-        resolve(alert(JSON.parse(content)));
-    }
-            }
-        )
-    })
-  };
 
-  getAll();
+
 // const getAll = () => new Promise((resolve, reject) => {
 //   if (arr === 'null') {
 //     reject(console.log('err'));
@@ -51,5 +22,10 @@ function getAll() {
 // });
 
 if (logButton) {
-  logButton.addEventListener('click', getAll);
-}
+  logButton.addEventListener('click', () => {
+    fs.appendFile('mynewfile1.txt', 'Hello content!', function (err) {
+      if (err) throw err;
+      console.log('Saved!');
+  });
+})
+};

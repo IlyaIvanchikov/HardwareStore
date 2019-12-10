@@ -1,104 +1,161 @@
 const path = require('path');
-const fs = require('fs');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const OptimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin');
+const HtmlWebPackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const fs = require('fs');
 const webpack = require('webpack');
-const cssnano = require('cssnano');
 
-const entry = path.join(__dirname, './app/src/index.js');
-const outputPath = path.join(__dirname, '/dist/');
 const PATHS = {
-  src: path.join(__dirname, './app/src'),
-  dist: path.join(__dirname, './dist'),
-  assets: 'assets/',
   page: path.join(__dirname, './app/src/page'),
 };
 const PAGES = fs.readdirSync(PATHS.page).filter((fileName) => fileName.endsWith('.html'));
+const ENV = process.env.npm_lifecycle_event;
+const isDev = ENV === 'dev';
+const isProd = ENV === 'build';
 
-module.exports = {
-  entry,
+function setDevTool() {
+  if (isDev) {
+    return 'cheap-module-eval-source-map';
+  } else {
+    return 'none';
+  }
+}
+
+function setDMode() {
+  if (isProd) {
+    return 'production';
+  } else {
+    return 'development';
+  }
+}
+
+const config = {
+  target: "web",
+  entry: {index: './app/src/index.js'},
   output: {
-    path: outputPath,
+    path: path.resolve(__dirname, 'dist'),
+    filename: '[name].js'
   },
-  node: {
+    node: {
     fs: 'empty',
   },
+  mode: setDMode(),
+  devtool: setDevTool(),
   module: {
-    rules: [
+    rules: [{
+        test: /\.html$/,
+        use: [{
+          loader: 'html-loader',
+          options: {
+            minimize: false
+          }
+        }]
+      },
       {
         test: /\.js$/,
-        exclude: ['/node_modules/'],
-        use: [
-          {
-            loader: 'babel-loader',
-            options: {
-              presets: ['env'],
-            },
-          },
-        ],
+        use: ['babel-loader'/* , 'eslint-loader' */],
+        exclude: [
+          /node_modules/
+        ]
       },
       {
         test: /\.css$/,
-        use: [{
-          loader: MiniCssExtractPlugin.loader,
-        },
-        'css-loader'],
+        use: [
+          'style-loader',
+          MiniCssExtractPlugin.loader,
+          {
+            loader: 'css-loader',
+            options: {
+              sourceMap: true
+            }
+          }, {
+            loader: 'postcss-loader',
+            options: { sourceMap: true, config: { path: './postcss.config.js' } }
+          }
+        ]
       },
       {
-        test: /\.(gif|png|jpg|svg)$/,
+        test: /\.scss$/,
+        use: [
+          'style-loader',
+          MiniCssExtractPlugin.loader,
+          {
+            loader: 'css-loader',
+            options: {
+              sourceMap: true
+            }
+          }, {
+            loader: 'postcss-loader',
+            options: { sourceMap: true, config: { path: './postcss.config.js' } }
+          }, {
+            loader: 'sass-loader',
+            options: {
+              sourceMap: true
+            }
+          }
+        ]
+      },
+      {
+        test: /\.(jpe?g|png|svg|gif)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              outputPath: 'img',
+              name: '[name].[ext]'
+            }},
+        ]
+      },
+      {
+        test: /\.(woff|woff2|ttf|otf|eot)$/,
         use: [{
           loader: 'file-loader',
           options: {
-            name: '[name].[ext]',
-            outputPath: 'assets/img',
-          },
-        },
-        ],
-      },
-      {
-        test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
-        use: [{
-          loader: 'file-loader',
-          options: {
-            name: '[name].[ext]',
-            outputPath: 'assets/img',
-          },
-        },
-        ],
-      },
-    ],
+            outputPath: 'fonts'
+          }
+        }]
+      }
+    ]
   },
+
   plugins: [
-    new CleanWebpackPlugin(),
-    ...PAGES.map((page) => new HtmlWebpackPlugin({
+    new MiniCssExtractPlugin({
+      filename: 'style.css',
+    }),
+    ...PAGES.map((page) => new HtmlWebPackPlugin({
       template: `${PATHS.page}/${page}`,
       filename: `./page/${page}`,
     })),
-    new MiniCssExtractPlugin({ filename: '[name].css' }),
     new webpack.ProvidePlugin({
       $: 'jquery',
       jQuery: 'jquery',
       'window.jQuery': 'jquery',
     }),
-    new OptimizeCssAssetsWebpackPlugin({
-      assetNameRegExp: /\.css$/g,
-      cssProcessor: cssnano,
-      cssProcessorPluginOptions: {
-        preset: ['default', {
-          discardComments: {
-            removeAll: true,
-          },
-        }],
-      },
-      canPrint: true,
-    }),
     new CopyWebpackPlugin([
-      { from: `${PATHS.src}/img`, to: `${PATHS.assets}/img` },
-      { from: `${PATHS.src}/fonts`, to: `${PATHS.assets}/fonts` },
-      { from: `${PATHS.src}/data`, to: `${PATHS.assets}/data` },
+       {from: './app/src/data', to: './data'},
+      // {from: './src/img', to: './img/'},
     ]),
   ],
+
+  devServer: {
+    // allowedHosts: [
+    //   '10.0.0.234',
+    // ],
+    contentBase: path.join(__dirname, 'dist/page'),
+    compress: true,
+    port: 3000,
+    overlay: true,
+    stats: 'errors-only',
+    clientLogLevel: 'none',
+    host: '0.0.0.0'
+  }
+}
+
+if (isProd) {
+  config.plugins.push(
+    new UglifyJSPlugin(),
+  );
 };
+
+module.exports = config;
