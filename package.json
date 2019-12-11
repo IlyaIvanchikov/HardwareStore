@@ -9,7 +9,7 @@
     "lint": "eslint ./**/*.js",
     "clear": "del-cli dist",
     "buildtest": "rm -rf dist && webpack --mode development",
-    "start": "node ./dist/index.js"
+    "start": "node ./dist/app.js"
   },
   "repository": {
     "type": "git",

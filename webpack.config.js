@@ -33,7 +33,10 @@ function setDMode() {
 
 const config = {
   target: 'node', 
-  entry: {index: './app/src/index.js'},
+  entry: {
+    index: './app/src/index.js',
+    app: './app/src/components/log.js',
+},
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].js'
