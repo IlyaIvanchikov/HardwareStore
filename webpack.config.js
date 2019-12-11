@@ -3,6 +3,7 @@ const HtmlWebPackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const nodeExternals = require('webpack-node-externals');
 const fs = require('fs');
 const webpack = require('webpack');
 
@@ -31,15 +32,17 @@ function setDMode() {
 }
 
 const config = {
-  target: "web",
+  target: 'node', 
   entry: {index: './app/src/index.js'},
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].js'
   },
-    node: {
-    fs: 'empty',
+  node: {
+    __dirname: false,   
+    __filename: false,  
   },
+  externals: [nodeExternals()],
   mode: setDMode(),
   devtool: setDevTool(),
   module: {
@@ -126,6 +129,7 @@ const config = {
     ...PAGES.map((page) => new HtmlWebPackPlugin({
       template: `${PATHS.page}/${page}`,
       filename: `./page/${page}`,
+      excludeChunks: [ 'index' ]
     })),
     new webpack.ProvidePlugin({
       $: 'jquery',
@@ -148,7 +152,6 @@ const config = {
     overlay: true,
     stats: 'errors-only',
     clientLogLevel: 'none',
-    host: '0.0.0.0'
   }
 }
 
