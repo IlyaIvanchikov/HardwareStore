@@ -77,45 +77,24 @@
 /******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
 /******/
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "";
+/******/ 	__webpack_require__.p = "/";
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./app/src/components/log.js");
+/******/ 	return __webpack_require__(__webpack_require__.s = "./app/src/components/server.js");
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./app/src/components/log.js":
-/*!***********************************!*\
-  !*** ./app/src/components/log.js ***!
-  \***********************************/
+/***/ "./app/src/components/server.js":
+/*!**************************************!*\
+  !*** ./app/src/components/server.js ***!
+  \**************************************/
 /*! no exports provided */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var core_js_modules_es_array_join__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/es.array.join */ "core-js/modules/es.array.join");
-/* harmony import */ var core_js_modules_es_array_join__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_join__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var path__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! path */ "path");
-/* harmony import */ var path__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(path__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var express__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! express */ "express");
-/* harmony import */ var express__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(express__WEBPACK_IMPORTED_MODULE_2__);
-
-
-
-var app = express__WEBPACK_IMPORTED_MODULE_2___default()();
-var DIST_DIR = __dirname;
-var HTML_FILE = path__WEBPACK_IMPORTED_MODULE_1___default.a.join(DIST_DIR, 'index.html');
-app.use(express__WEBPACK_IMPORTED_MODULE_2___default.a["static"](DIST_DIR));
-app.get('*', function (req, res) {
-  res.sendFile(HTML_FILE);
-});
-var PORT = process.env.PORT || 8080;
-app.listen(PORT, function () {
-  console.log("App listening to ".concat(PORT, "...."));
-  console.log('Press Ctrl+C to quit.');
-});
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var core_js_modules_es_array_join__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/es.array.join */ \"core-js/modules/es.array.join\");\n/* harmony import */ var core_js_modules_es_array_join__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_join__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var path__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! path */ \"path\");\n/* harmony import */ var path__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(path__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var express__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! express */ \"express\");\n/* harmony import */ var express__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(express__WEBPACK_IMPORTED_MODULE_2__);\n\n\n\nvar app = express__WEBPACK_IMPORTED_MODULE_2___default()();\nvar DIST_DIR = __dirname;\nvar HTML_FILE = path__WEBPACK_IMPORTED_MODULE_1___default.a.join(DIST_DIR, 'page', 'index.html');\napp.use(express__WEBPACK_IMPORTED_MODULE_2___default.a[\"static\"](DIST_DIR));\napp.get('*', function (req, res) {\n  res.sendFile(HTML_FILE);\n});\nvar PORT = process.env.PORT || 8080;\napp.listen(PORT, function () {\n  console.log(\"App listening to \".concat(PORT, \"....\"));\n  console.log('Press Ctrl+C to quit.');\n});\n\n//# sourceURL=webpack:///./app/src/components/server.js?");
 
 /***/ }),
 
@@ -126,7 +105,7 @@ app.listen(PORT, function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = require("core-js/modules/es.array.join");
+eval("module.exports = require(\"core-js/modules/es.array.join\");\n\n//# sourceURL=webpack:///external_%22core-js/modules/es.array.join%22?");
 
 /***/ }),
 
@@ -137,7 +116,7 @@ module.exports = require("core-js/modules/es.array.join");
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = require("express");
+eval("module.exports = require(\"express\");\n\n//# sourceURL=webpack:///external_%22express%22?");
 
 /***/ }),
 
@@ -148,7 +127,7 @@ module.exports = require("express");
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = require("path");
+eval("module.exports = require(\"path\");\n\n//# sourceURL=webpack:///external_%22path%22?");
 
 /***/ })
 

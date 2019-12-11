@@ -32,13 +32,13 @@ function setDMode() {
 }
 
 const config = {
-  target: 'node', 
+  target: 'web', 
   entry: {
     index: './app/src/index.js',
-    app: './app/src/components/log.js',
 },
   output: {
     path: path.resolve(__dirname, 'dist'),
+    publicPath: '/',
     filename: '[name].js'
   },
   node: {
@@ -132,12 +132,13 @@ const config = {
     ...PAGES.map((page) => new HtmlWebPackPlugin({
       template: `${PATHS.page}/${page}`,
       filename: `./page/${page}`,
-      excludeChunks: [ 'index' ]
+      excludeChunks: [ 'server' ]
     })),
     new webpack.ProvidePlugin({
       $: 'jquery',
       jQuery: 'jquery',
       'window.jQuery': 'jquery',
+      require('bootstrap');
     }),
     new CopyWebpackPlugin([
        {from: './app/src/data', to: './data'},

@@ -77,7 +77,7 @@
 /******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
 /******/
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "";
+/******/ 	__webpack_require__.p = "/";
 /******/
 /******/
 /******/ 	// Load entry module and return exports
@@ -101,39 +101,6 @@ $(document).ready(function () {
 
 /***/ }),
 
-/***/ "./app/src/components/log.js":
-/*!***********************************!*\
-  !*** ./app/src/components/log.js ***!
-  \***********************************/
-/*! no exports provided */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var core_js_modules_es_array_join__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/es.array.join */ "core-js/modules/es.array.join");
-/* harmony import */ var core_js_modules_es_array_join__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_join__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var path__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! path */ "path");
-/* harmony import */ var path__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(path__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var express__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! express */ "express");
-/* harmony import */ var express__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(express__WEBPACK_IMPORTED_MODULE_2__);
-
-
-
-var app = express__WEBPACK_IMPORTED_MODULE_2___default()();
-var DIST_DIR = __dirname;
-var HTML_FILE = path__WEBPACK_IMPORTED_MODULE_1___default.a.join(DIST_DIR, 'index.html');
-app.use(express__WEBPACK_IMPORTED_MODULE_2___default.a["static"](DIST_DIR));
-app.get('*', function (req, res) {
-  res.sendFile(HTML_FILE);
-});
-var PORT = process.env.PORT || 8080;
-app.listen(PORT, function () {
-  console.log("App listening to ".concat(PORT, "...."));
-  console.log('Press Ctrl+C to quit.');
-});
-
-/***/ }),
-
 /***/ "./app/src/index.js":
 /*!**************************!*\
   !*** ./app/src/index.js ***!
@@ -143,28 +110,26 @@ app.listen(PORT, function () {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _style_main_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style/main.css */ "./app/src/style/main.css");
-/* harmony import */ var _style_main_css__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_style_main_css__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _style_fonts_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./style/fonts.css */ "./app/src/style/fonts.css");
-/* harmony import */ var _style_fonts_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_style_fonts_css__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _style_payment_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./style/payment.css */ "./app/src/style/payment.css");
-/* harmony import */ var _style_payment_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_style_payment_css__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _style_delivery_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./style/delivery.css */ "./app/src/style/delivery.css");
-/* harmony import */ var _style_delivery_css__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_style_delivery_css__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _style_company_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./style/company.css */ "./app/src/style/company.css");
-/* harmony import */ var _style_company_css__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_style_company_css__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _style_inlog_css__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./style/inlog.css */ "./app/src/style/inlog.css");
-/* harmony import */ var _style_inlog_css__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_style_inlog_css__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _style_pbi_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./style/pbi.css */ "./app/src/style/pbi.css");
-/* harmony import */ var _style_pbi_css__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_style_pbi_css__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _components_log__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/log */ "./app/src/components/log.js");
-/* harmony import */ var bootstrap__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! bootstrap */ "bootstrap");
-/* harmony import */ var bootstrap__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(bootstrap__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var _components_header__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/header */ "./app/src/components/header.js");
-/* harmony import */ var _components_header__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_components_header__WEBPACK_IMPORTED_MODULE_9__);
-/* harmony import */ var bootstrap_dist_css_bootstrap_min_css__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! bootstrap/dist/css/bootstrap.min.css */ "bootstrap/dist/css/bootstrap.min.css");
-/* harmony import */ var bootstrap_dist_css_bootstrap_min_css__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(bootstrap_dist_css_bootstrap_min_css__WEBPACK_IMPORTED_MODULE_10__);
-
+/* harmony import */ var bootstrap__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! bootstrap */ "bootstrap");
+/* harmony import */ var bootstrap__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(bootstrap__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _components_header__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/header */ "./app/src/components/header.js");
+/* harmony import */ var _components_header__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_components_header__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var bootstrap_dist_css_bootstrap_min_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! bootstrap/dist/css/bootstrap.min.css */ "bootstrap/dist/css/bootstrap.min.css");
+/* harmony import */ var bootstrap_dist_css_bootstrap_min_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(bootstrap_dist_css_bootstrap_min_css__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _style_main_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./style/main.css */ "./app/src/style/main.css");
+/* harmony import */ var _style_main_css__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_style_main_css__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _style_fonts_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./style/fonts.css */ "./app/src/style/fonts.css");
+/* harmony import */ var _style_fonts_css__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_style_fonts_css__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _style_payment_css__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./style/payment.css */ "./app/src/style/payment.css");
+/* harmony import */ var _style_payment_css__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_style_payment_css__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _style_delivery_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./style/delivery.css */ "./app/src/style/delivery.css");
+/* harmony import */ var _style_delivery_css__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_style_delivery_css__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _style_company_css__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./style/company.css */ "./app/src/style/company.css");
+/* harmony import */ var _style_company_css__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_style_company_css__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _style_inlog_css__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./style/inlog.css */ "./app/src/style/inlog.css");
+/* harmony import */ var _style_inlog_css__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_style_inlog_css__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _style_pbi_css__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./style/pbi.css */ "./app/src/style/pbi.css");
+/* harmony import */ var _style_pbi_css__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_style_pbi_css__WEBPACK_IMPORTED_MODULE_9__);
 
 
 
@@ -759,28 +724,6 @@ module.exports = require("bootstrap/dist/css/bootstrap.min.css");
 
 /***/ }),
 
-/***/ "core-js/modules/es.array.join":
-/*!************************************************!*\
-  !*** external "core-js/modules/es.array.join" ***!
-  \************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("core-js/modules/es.array.join");
-
-/***/ }),
-
-/***/ "express":
-/*!**************************!*\
-  !*** external "express" ***!
-  \**************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("express");
-
-/***/ }),
-
 /***/ "jquery":
 /*!*************************!*\
   !*** external "jquery" ***!
@@ -789,17 +732,6 @@ module.exports = require("express");
 /***/ (function(module, exports) {
 
 module.exports = require("jquery");
-
-/***/ }),
-
-/***/ "path":
-/*!***********************!*\
-  !*** external "path" ***!
-  \***********************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("path");
 
 /***/ })
 
