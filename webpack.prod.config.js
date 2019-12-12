@@ -3,7 +3,6 @@ const HtmlWebPackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const nodeExternals = require('webpack-node-externals');
 const fs = require('fs');
 const webpack = require('webpack');
 
@@ -18,21 +17,18 @@ const isProd = ENV === 'build';
 function setDevTool() {
   if (isDev) {
     return 'cheap-module-eval-source-map';
-  } else {
+  } 
     return 'none';
-  }
 }
 
 function setDMode() {
   if (isProd) {
     return 'production';
-  } else {
+  } 
     return 'development';
-  }
 }
 
 const config = {
-  target: 'web', 
   entry: {
     index: './app/src/index.js',
 },
@@ -41,11 +37,11 @@ const config = {
     publicPath: '/',
     filename: '[name].js'
   },
+  target: 'web', 
   node: {
     __dirname: false,   
     __filename: false,  
   },
-  externals: [nodeExternals()],
   mode: setDMode(),
   devtool: setDevTool(),
   module: {
@@ -138,7 +134,6 @@ const config = {
       $: 'jquery',
       jQuery: 'jquery',
       'window.jQuery': 'jquery',
-      require('bootstrap');
     }),
     new CopyWebpackPlugin([
        {from: './app/src/data', to: './data'},

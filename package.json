@@ -8,7 +8,8 @@
     "build": "npm run clear -s && webpack --progress",
     "lint": "eslint ./**/*.js",
     "clear": "del-cli dist",
-    "buildtest": "rm -rf dist && webpack --mode development --config webpack.server.config.js && webpack --mode development",
+    "buildDev": "rm -rf dist && webpack --mode development --config webpack.server.config.js && webpack --mode development --config webpack.dev.config.js",
+    "buildProd": "rm -rf dist && webpack --mode production --config webpack.server.config.js && webpack --mode production --config webpack.prod.config.js",
     "start": "node ./dist/server.js"
   },
   "repository": {
@@ -23,40 +24,41 @@
   "homepage": "https://github.com/IlyaIvanchikov/HardwareStore#readme",
   "dependencies": {
     "bootstrap": "^4.4.1",
-    "core-js": "^3.4.7",
+    "copy-webpack-plugin": "^5.1.1",
+    "core-js": "^3.5.0",
     "express": "^4.17.1",
+    "html-webpack-plugin": "^3.2.0",
     "jquery": "^3.4.1",
+    "mini-css-extract-plugin": "^0.8.0",
     "popper.js": "^1.16.0",
-    "regenerator-runtime": "^0.13.3"
+    "regenerator-runtime": "^0.13.3",
+    "uglifyjs-webpack-plugin": "^2.2.0",
+    "webpack": "^4.41.2",
+    "webpack-dev-middleware": "^3.7.2",
+    "webpack-node-externals": "^1.7.2"
   },
   "devDependencies": {
     "@babel/core": "^7.6.0",
     "@babel/preset-env": "^7.6.0",
     "autoprefixer": "^9.6.1",
     "babel-loader": "^8.0.6",
-    "copy-webpack-plugin": "^5.0.5",
-    "css-loader": "^3.2.0",
+    "css-loader": "^3.3.0",
     "css-mqpacker": "^7.0.0",
     "cssnano": "^4.1.10",
     "del-cli": "^3.0.0",
     "eslint": "^6.6.0",
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-config-prettier": "^6.5.0",
-    "eslint-loader": "^3.0.2",
-    "eslint-plugin-import": "^2.18.2",
+    "eslint-loader": "^3.0.3",
+    "eslint-plugin-import": "^2.19.1",
     "file-loader": "^4.2.0",
     "html-loader": "^0.5.5",
-    "html-webpack-plugin": "^3.2.0",
     "image-webpack-loader": "^6.0.0",
-    "mini-css-extract-plugin": "^0.8.0",
     "node-sass": "^4.13.0",
     "postcss-loader": "^3.0.0",
     "sass-loader": "^8.0.0",
     "style-loader": "^1.0.0",
-    "uglifyjs-webpack-plugin": "^2.2.0",
-    "webpack": "^4.41.2",
     "webpack-cli": "^3.3.9",
-    "webpack-dev-server": "^3.8.2",
-    "webpack-node-externals": "^1.7.2"
+    "webpack-dev-server": "^3.8.2"
   }
 }
