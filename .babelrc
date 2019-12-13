@@ -4,5 +4,15 @@
           "useBuiltIns": "usage",
           "corejs": 3
       }]
-   ]
+   ],
+   "sourceType": "unambiguous"
   }
+
+
+// module.exports = {
+//     presets: [
+//       '@quasar/babel-preset-app'
+//     ],
+  
+//     "sourceType": "unambiguous"
+//   }

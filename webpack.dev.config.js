@@ -7,11 +7,11 @@ const PATHS = {
   page: path.join(__dirname, './app/src/page'),
 };
 
-const PAGES = fs.readdirSync(PATHS.page).filter((fileName) => fileName.endsWith('.html'));
-module.exports = {
+// const PAGES = fs.readdirSync(PATHS.page).filter((fileName) => fileName.endsWith('.html'));
+const config = {
   mode: 'development',
   entry: {
-    index: './app/src/index.js',
+    index: ['webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000', './app/src/index.js']
   },
   output: { 
     path: path.join(__dirname, 'dist'),
@@ -76,16 +76,25 @@ module.exports = {
     ]
   },
   plugins: [
-    ...PAGES.map((page) => new HtmlWebPackPlugin({
-      template: `${PATHS.page}/${page}`,
-      filename: `./page/${page}`,
+    // ...PAGES.map((page) => new HtmlWebPackPlugin({
+    //   template: `${PATHS.page}/${page}`,
+    //   filename: `./page/${page}`,
+    //   excludeChunks: [ 'server' ]
+    // })),
+    new HtmlWebPackPlugin({
+      template: "./app/src/page/index.html",
+      filename: "./index.html",
       excludeChunks: [ 'server' ]
-    })),
+    }),
     new webpack.ProvidePlugin({
       $: 'jquery',
       jQuery: 'jquery',
       'window.jQuery': 'jquery',
     }),
+    new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin()
   ]
-}
+};
+
+module.exports = config;
+
