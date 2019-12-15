@@ -11,5 +11,5 @@ import './style/pbi.css';
 
 
 if(typeof(module.hot) !== 'undefined') {
-    module.hot.accept() // eslint-disable-line no-undef  
+    module.hot.accept()
   }

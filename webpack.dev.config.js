@@ -7,7 +7,8 @@ const PATHS = {
   page: path.join(__dirname, './app/src/page'),
 };
 
-// const PAGES = fs.readdirSync(PATHS.page).filter((fileName) => fileName.endsWith('.html'));
+const PAGES = fs.readdirSync(PATHS.page).filter((fileName) => fileName.endsWith('.html'));
+
 const config = {
   mode: 'development',
   entry: {
@@ -76,16 +77,16 @@ const config = {
     ]
   },
   plugins: [
-    // ...PAGES.map((page) => new HtmlWebPackPlugin({
-    //   template: `${PATHS.page}/${page}`,
-    //   filename: `./page/${page}`,
-    //   excludeChunks: [ 'server' ]
-    // })),
-    new HtmlWebPackPlugin({
-      template: "./app/src/page/index.html",
-      filename: "./index.html",
+    ...PAGES.map((page) => new HtmlWebPackPlugin({
+      template: `${PATHS.page}/${page}`,
+      filename: `./page/${page}`,
       excludeChunks: [ 'server' ]
-    }),
+    })),
+    // new HtmlWebPackPlugin({
+    //   template: "./app/src/page/index.html",
+    //   filename: "./index.html",
+    //   excludeChunks: [ 'server' ]
+    // }),
     new webpack.ProvidePlugin({
       $: 'jquery',
       jQuery: 'jquery',
