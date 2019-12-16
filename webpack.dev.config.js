@@ -1,18 +1,12 @@
 const path = require("path")
 const HtmlWebPackPlugin = require("html-webpack-plugin");
-const fs = require('fs');
 const webpack = require('webpack');
-
-const PATHS = {
-  page: path.join(__dirname, './app/src/page'),
-};
-
-const PAGES = fs.readdirSync(PATHS.page).filter((fileName) => fileName.endsWith('.html'));
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const config = {
   mode: 'development',
   entry: {
-    index: ['webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000', './app/src/index.js']
+    index:  './app/src/index.js'
   },
   output: { 
     path: path.join(__dirname, 'dist'),
@@ -24,13 +18,6 @@ const config = {
   module: {
     rules: [
       {
-        test: /\.js$/,
-        use: ['babel-loader'/* , 'eslint-loader' */],
-        exclude: [
-          /node_modules/
-        ]
-      },
-      {
         test: /\.html$/,
         use: [{
           loader: 'html-loader',
@@ -38,6 +25,13 @@ const config = {
             minimize: false
           }
         }]
+      },
+      {
+        test: /\.js$/,
+        use: ['babel-loader'/* , 'eslint-loader' */],
+        exclude: [
+          /node_modules/
+        ]
       },
       {
         test: /\.css$/,
@@ -77,22 +71,49 @@ const config = {
     ]
   },
   plugins: [
-    ...PAGES.map((page) => new HtmlWebPackPlugin({
-      template: `${PATHS.page}/${page}`,
-      filename: `./page/${page}`,
+    new HtmlWebPackPlugin({
+      template: "./app/src/page/index.html",
+      filename: "./index.html",
       excludeChunks: [ 'server' ]
-    })),
-    // new HtmlWebPackPlugin({
-    //   template: "./app/src/page/index.html",
-    //   filename: "./index.html",
-    //   excludeChunks: [ 'server' ]
-    // }),
+    }),
+    new HtmlWebPackPlugin({
+      template: "./app/src/page/company.html",
+      filename: "./company.html",
+      excludeChunks: [ 'server' ]
+    }),
+    new HtmlWebPackPlugin({
+      template: "./app/src/page/delivery.html",
+      filename: "./delivery.html",
+      excludeChunks: [ 'server' ]
+    }),
+    new HtmlWebPackPlugin({
+      template: "./app/src/page/inlog.html",
+      filename: "./inlog.html",
+      excludeChunks: [ 'server' ]
+    }),
+    new HtmlWebPackPlugin({
+      template: "./app/src/page/payment.html",
+      filename: "./payment.html",
+      excludeChunks: [ 'server' ]
+    }),
+    new HtmlWebPackPlugin({
+      template: "./app/src/page/pbi.html",
+      filename: "./pbi.html",
+      excludeChunks: [ 'server' ]
+    }),
+    new HtmlWebPackPlugin({
+      template: "./app/src/page/register.html",
+      filename: "./register.html",
+      excludeChunks: [ 'server' ]
+    }),
+    new CopyWebpackPlugin([
+      {from: './app/src/data', to: './data'},
+   ]),
     new webpack.ProvidePlugin({
       $: 'jquery',
       jQuery: 'jquery',
       'window.jQuery': 'jquery',
     }),
-    new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin()
   ]
 };

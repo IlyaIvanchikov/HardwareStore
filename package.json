@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/IlyaIvanchikov/HardwareStore#readme",
   "dependencies": {
+    "body-parser": "^1.19.0",
     "bootstrap": "^4.4.1",
     "copy-webpack-plugin": "^5.1.1",
     "core-js": "^3.5.0",

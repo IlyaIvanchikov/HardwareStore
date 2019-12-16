@@ -37,15 +37,15 @@
                 </div>
               </nav>
     <div class="d-flex justify-content-center log align-items-center">
-    <form action="inlog" method="POST">
+    <form action="/inlog" method="post">
                 <div class="form-group">
                   <label for="Login">Login</label>
-                  <input type="text" class="form-control form-control-lg" id="Login" placeholder="Введите логин">
+                  <input type="text" class="form-control form-control-lg" id="Login" placeholder="Введите логин" name="login" />
                   <small id="LogHelp" class="form-text text-muted">Введите ваш логин</small>
                 </div>
                 <div class="form-group">
                   <label for="exampleInputPassword1">Password</label>
-                  <input type="password" class="form-control form-control-lg" id="exampleInputPassword1" placeholder="Password">
+                  <input type="password" class="form-control form-control-lg" id="exampleInputPassword1" placeholder="Password" name="password">
                 </div>
                 <button type='submit' class="btn btn-primary log-button">Вход</button>
                 <a class="register" href="./register.html">Регистрация</a>
