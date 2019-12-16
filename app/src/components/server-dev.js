@@ -16,19 +16,7 @@ app.use(webpackDevMiddleware(compiler, {
 }));
 
 
-
-
-
-
-
-
-
-
-
-
-
 app.post("/register", urlencodedParser, async (req, res) => {
-  console.log(req.body);
   if(!req.body) {
     res.sendStatus(400);
   }
@@ -38,18 +26,25 @@ app.post("/register", urlencodedParser, async (req, res) => {
 });
 
 app.post("/inlog", urlencodedParser, async (req, res) => {
-  console.log(req.body);
   if(!req.body) {
     res.sendStatus(400);
   }  
     const user = new Users(req.body.log, req.body.pass);
-    await user.search(req.body);
-    if (user.search(req.body)){
+    const result = await user.search();
+    console.log(result);
+    if (result ) {
       res.redirect('index.html');
     }
     else {
-      res.redirect('inlog.html'); 
+      res.redirect('inlog.html');
     }
+
+    // if (user.search(req.body)){
+    //   res.redirect('index.html');
+    // }
+    // else {
+    //   res.redirect('inlog.html'); 
+    // }
 
 });
 

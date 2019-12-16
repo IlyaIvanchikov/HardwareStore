@@ -25,7 +25,6 @@ toJSON() {
         if (err) {
             reject(err);
         } else {
-            console.log(users);
             resolve(users);
         }
                 }
@@ -33,9 +32,11 @@ toJSON() {
         })
     };
 
-static async search(user) {
+async search() {
     const users = await Users.allInfo();
-    const result = users.find(item => item.log === user.log);
+    const result = users.find(item => 
+    (item.log === this.log) && (item.pass === this.pass));
+    console.log(result);
     return result;
 }
 
