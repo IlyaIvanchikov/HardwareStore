@@ -11,22 +11,8 @@ const PATHS = {
 };
 const PAGES = fs.readdirSync(PATHS.page).filter((fileName) => fileName.endsWith('.html'));
 const ENV = process.env.npm_lifecycle_event;
-const isDev = ENV === 'dev';
-const isProd = ENV === 'build';
 
-function setDevTool() {
-  if (isDev) {
-    return 'cheap-module-eval-source-map';
-  } 
-    return 'none';
-}
 
-function setDMode() {
-  if (isProd) {
-    return 'production';
-  } 
-    return 'development';
-}
 
 const config = {
   entry: {
@@ -42,8 +28,7 @@ const config = {
     __dirname: false,   
     __filename: false,  
   },
-  mode: setDMode(),
-  devtool: setDevTool(),
+  devtool: 'source-map',
   module: {
     rules: [{
         test: /\.html$/,
@@ -141,23 +126,8 @@ const config = {
     ]),
   ],
 
-  devServer: {
-    // allowedHosts: [
-    //   '10.0.0.234',
-    // ],
-    contentBase: path.join(__dirname, 'dist/page'),
-    compress: true,
-    port: 3000,
-    overlay: true,
-    stats: 'errors-only',
-    clientLogLevel: 'none',
-  }
 }
 
-if (isProd) {
-  config.plugins.push(
-    new UglifyJSPlugin(),
-  );
-};
+
 
 module.exports = config;
