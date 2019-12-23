@@ -14,7 +14,7 @@ other1.addEventListener("click", (e) => {
   let elem = document.getElementById(id);
   elem.hidden = !elem.hidden;
 })
-other1.insertAdjacentHTML('afterbegin', '<p id="other-id1" hidden> Hello </p>');
+other1.insertAdjacentHTML('afterbegin', '<p id="other-id1" hidden> Техника твой мечты </p>');
 
 const other2 = document.querySelector('.other2');
 
@@ -26,7 +26,7 @@ other2.addEventListener("click", (e) => {
   let elem = document.getElementById(id);
   elem.hidden = !elem.hidden;
 })
-other2.insertAdjacentHTML('afterbegin', '<p id="other-id2" hidden> Hello </p>');
+other2.insertAdjacentHTML('afterbegin', '<p id="other-id2" hidden> Просто мечта </p>');
 
 const other3 = document.querySelector('.other3');
 
@@ -38,7 +38,7 @@ other3.addEventListener("click", (e) => {
   let elem = document.getElementById(id);
   elem.hidden = !elem.hidden;
 })
-other3.insertAdjacentHTML('afterbegin', '<p id="other-id3" hidden> Hello </p>');
+other3.insertAdjacentHTML('afterbegin', '<p id="other-id3" hidden> Удивительная техника </p>');
 window.addEventListener('DOMContentLoaded', () => {
 
   const user = document.querySelector('.user');

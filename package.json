@@ -15,14 +15,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/IlyaIvanchikov/HardwareStore.git"
+    "url": ""
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/IlyaIvanchikov/HardwareStore/issues"
+    "url": ""
   },
-  "homepage": "https://github.com/IlyaIvanchikov/HardwareStore#readme",
+  "homepage": "",
   "dependencies": {
     "body-parser": "^1.19.0",
     "bootstrap": "^4.4.1",
